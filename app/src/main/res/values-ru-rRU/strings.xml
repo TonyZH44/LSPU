@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Личный кабинет ЛГПУ</string>
+    <string name="nav_header_title">Личный кабинет</string>
+    <string name="action_settings">Настройки</string>
+    <string name="menu_news">Новости</string>
+    <string name="menu_schedule">Расписание</string>
+    <string name="menu_messages">Сообщения</string>
+    <string name="login">Логин</string>
+    <string name="password">Пароль</string>
+    <string name="log_in">Войти</string>
+    <string name="remember">Запомнить</string>
+    <string name="log_out">Выйти</string>
+    <string name="language">Язык</string>
+    <string name="popup_exit_msg">Вы хотите выйти из аккаунта?</string>
+    <string name="yes">ДА</string>
+    <string name="no">НЕТ</string>
+    <string name="popup_exit_title">Выйти?</string>
+    <string name="settings_general">Общие</string>
+
+</resources>
