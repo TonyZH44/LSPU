@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
@@ -27,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
     Button buttonLogin, buttonClear;
     CheckBox checkBoxMemory;
     String cookies;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
 
         DBAsyncTask dbAsyncTask = new DBAsyncTask(getBaseContext());
 
-
+        progressBar = findViewById(R.id.progressBar);
         loginText = findViewById(R.id.login);
         passwordText = findViewById(R.id.password);
         buttonLogin = findViewById(R.id.button_login);
@@ -73,6 +75,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                progressBar.setVisibility(ProgressBar.VISIBLE);
+
                 String login = loginText.getText().toString();
                 String password = passwordText.getText().toString();
                 boolean remember = false;
@@ -80,8 +84,10 @@ public class LoginActivity extends AppCompatActivity {
                 if (checkBoxMemory.isChecked()) remember = true;
 
 
+
                 try {
                     cookies = new LoginAsyncTask(login, password, remember, getBaseContext()).execute().get();
+
                 } catch (ExecutionException e) {
                     e.printStackTrace();
                 } catch (InterruptedException e) {
@@ -118,6 +124,7 @@ public class LoginActivity extends AppCompatActivity {
                 getBaseContext().getResources().getDisplayMetrics());
 
     }
+
 
 
 }

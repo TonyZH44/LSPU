@@ -94,5 +94,4 @@ public class ScheduleAsyncTask extends AsyncTask<String, String, String> {
         this.scheduleHTMLTable = String.valueOf(doc);
     }
 
-
 }
