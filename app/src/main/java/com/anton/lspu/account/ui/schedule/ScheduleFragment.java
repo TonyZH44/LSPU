@@ -88,7 +88,5 @@ public class ScheduleFragment extends Fragment {
 
             return true;
         }
-
-
     }
 }
