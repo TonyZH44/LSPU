@@ -75,7 +75,11 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                progressBar.setVisibility(ProgressBar.VISIBLE);
+                LoginActivity.this.runOnUiThread(new Runnable() {
+                public void run() {
+                        progressBar.setVisibility(ProgressBar.VISIBLE);
+                    }
+                });
 
                 String login = loginText.getText().toString();
                 String password = passwordText.getText().toString();
@@ -83,7 +87,7 @@ public class LoginActivity extends AppCompatActivity {
                 cookies = null;
                 if (checkBoxMemory.isChecked()) remember = true;
 
-
+    
 
                 try {
                     cookies = new LoginAsyncTask(login, password, remember, getBaseContext()).execute().get();
