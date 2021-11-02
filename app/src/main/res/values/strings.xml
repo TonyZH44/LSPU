@@ -23,5 +23,9 @@
     <string name="yes">YES</string>
     <string name="no">NO</string>
     <string name="settings_general">General</string>
+    <string name="menu_about">About App</string>
+    <string name="version">Version:</string>
+    <string name="copyright" translatable="false">Copyright 2021 by Lipetsk State Pedagogical University</string>
+    <string name="authors">Authors: Toneyev Anton and Skudnev Dmitriy</string>
 
 </resources>

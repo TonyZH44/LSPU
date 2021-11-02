@@ -17,5 +17,8 @@
     <string name="no">НЕТ</string>
     <string name="popup_exit_title">Выйти?</string>
     <string name="settings_general">Общие</string>
+    <string name="menu_about">О приложении</string>
+    <string name="version">Версия</string>
+    <string name="authors">Авторы: Тонеев Антон Андреевич и Скуднев Дмитрий Михайлович</string>
 
 </resources>
