@@ -75,7 +75,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                MainActivity.this.runOnUiThread(new Runnable() {
+                LoginActivity.this.runOnUiThread(new Runnable() {
                 public void run() {
                         progressBar.setVisibility(ProgressBar.VISIBLE);
                     }
