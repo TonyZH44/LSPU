@@ -75,11 +75,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                LoginActivity.this.runOnUiThread(new Runnable() {
-                public void run() {
-                        progressBar.setVisibility(ProgressBar.VISIBLE);
-                    }
-                });
+                progressBar.setVisibility(ProgressBar.VISIBLE);
 
                 String login = loginText.getText().toString();
                 String password = passwordText.getText().toString();
