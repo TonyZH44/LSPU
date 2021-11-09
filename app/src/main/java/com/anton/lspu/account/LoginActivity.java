@@ -1,9 +1,11 @@
 package com.anton.lspu.account;
 
+import android.content.Context;
 import android.content.Intent;
 
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -19,6 +21,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
 
+import java.lang.ref.WeakReference;
 import java.util.Locale;
 import java.util.concurrent.ExecutionException;
 
@@ -27,8 +30,11 @@ public class LoginActivity extends AppCompatActivity {
     EditText loginText, passwordText;
     Button buttonLogin, buttonClear;
     CheckBox checkBoxMemory;
-    String cookies;
+    String cookies = null;
+    String login;
+    String password;
     ProgressBar progressBar;
+    Boolean remember = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,35 +83,8 @@ public class LoginActivity extends AppCompatActivity {
 
                 progressBar.setVisibility(ProgressBar.VISIBLE);
 
-                String login = loginText.getText().toString();
-                String password = passwordText.getText().toString();
-                boolean remember = false;
-                cookies = null;
-                if (checkBoxMemory.isChecked()) remember = true;
+                new LoginATask(LoginActivity.this).execute();
 
-    
-
-                try {
-                    cookies = new LoginAsyncTask(login, password, remember, getBaseContext()).execute().get();
-
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-
-
-                if (cookies != null) {
-
-                    Intent logIntent = new Intent(getBaseContext(), DrawerActivity.class);
-                    logIntent.putExtra("cookies", cookies);
-                    startActivity(logIntent);
-
-                }
-                else {
-                    Toast.makeText(getBaseContext(), "Error",Toast.LENGTH_SHORT).show();
-                    progressBar.setVisibility(ProgressBar.INVISIBLE);
-                }
             }
         });
 
@@ -126,8 +105,56 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    private static class LoginATask extends AsyncTask<Void, Void, Void>{
 
 
+        private final WeakReference<LoginActivity> weakReference;
+        String login, password, cookies;
+        Boolean remember;
+
+        LoginATask(LoginActivity context){
+            weakReference = new WeakReference<>(context);
+
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+
+            LoginActivity activity = weakReference.get();
+
+            login = activity.loginText.getText().toString();
+            password = activity.passwordText.getText().toString();
+            remember = activity.checkBoxMemory.isChecked();
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void unused) {
+
+            LoginActivity activity = weakReference.get();
+
+            try {
+                cookies = new LoginAsyncTask(login, password, remember, activity).execute().get();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            if (cookies != null) {
+
+                Intent logIntent = new Intent(activity, DrawerActivity.class);
+                logIntent.putExtra("cookies", cookies);
+                activity.startActivity(logIntent);
+
+            }
+            else {
+                Toast.makeText(activity, "Error",Toast.LENGTH_SHORT).show();
+                activity.progressBar.setVisibility(ProgressBar.INVISIBLE);
+            }
+        }
+
+    }
 }
 
 
