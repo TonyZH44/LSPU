@@ -7,16 +7,11 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.Menu;
 
 import com.anton.lspu.account.ui.settings.SettingsActivity;
-import com.anton.lspu.account.ui.settings.SettingsActivity2;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
-import androidx.activity.OnBackPressedCallback;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
@@ -53,7 +48,7 @@ public class DrawerActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_news, R.id.nav_schedule, R.id.nav_messages)
+                R.id.nav_news, R.id.nav_schedule, R.id.nav_messages, R.id.nav_about)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -77,7 +72,7 @@ public class DrawerActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_settings:
                 // Action goes here
-                Intent settingsIntent = new Intent(getBaseContext(), SettingsActivity2.class);
+                Intent settingsIntent = new Intent(getBaseContext(), SettingsActivity.class);
                 startActivity(settingsIntent);
 
 

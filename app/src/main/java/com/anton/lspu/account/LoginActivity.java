@@ -83,7 +83,7 @@ public class LoginActivity extends AppCompatActivity {
                 cookies = null;
                 if (checkBoxMemory.isChecked()) remember = true;
 
-
+    
 
                 try {
                     cookies = new LoginAsyncTask(login, password, remember, getBaseContext()).execute().get();
@@ -104,6 +104,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 else {
                     Toast.makeText(getBaseContext(), "Error",Toast.LENGTH_SHORT).show();
+                    progressBar.setVisibility(ProgressBar.INVISIBLE);
                 }
             }
         });

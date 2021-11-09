@@ -13,9 +13,6 @@
         android:theme="@style/Theme.ЛичныйКабинетЛГПУ"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ui.AboutActivity"
-            android:exported="false" />
-        <activity
             android:name=".DrawerActivity"
             android:label="@string/title_activity_drawer"
             android:theme="@style/Theme.ЛичныйКабинетЛГПУ.NoActionBar" />
@@ -27,7 +24,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.settings.SettingsActivity" />
-        <activity android:name=".ui.settings.SettingsActivity2" />
         <activity android:name=".ui.news.NewsActivity" />
     </application>
 
