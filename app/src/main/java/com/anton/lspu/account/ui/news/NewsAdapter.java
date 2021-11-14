@@ -1,11 +1,9 @@
 package com.anton.lspu.account.ui.news;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +11,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -91,7 +88,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
             titleText = itemView.findViewById(R.id.article_title);
             descriptionText = itemView.findViewById(R.id.article_description);
             dateText = itemView.findViewById(R.id.article_date);
-            imageView = itemView.findViewById(R.id.article_image);
+            imageView = itemView.findViewById(R.id.coat_of_arms);
             mainConstraintLayout = itemView.findViewById(R.id.article_mainConstraintLayout);
 
         }

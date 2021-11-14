@@ -1,23 +1,23 @@
 package com.anton.lspu.account;
 
-import android.content.Context;
+
 import android.content.Intent;
 
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.AsyncTask;
-import android.os.Build;
+
 import android.os.Bundle;
 
-import android.util.Log;
-import android.view.View;
+
+
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import androidx.annotation.RequiresApi;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
 
@@ -30,11 +30,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText loginText, passwordText;
     Button buttonLogin, buttonClear;
     CheckBox checkBoxMemory;
-    String cookies = null;
-    String login;
-    String password;
     ProgressBar progressBar;
-    Boolean remember = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,27 +61,20 @@ public class LoginActivity extends AppCompatActivity {
             //startActivity(logIntent);
         }
 
-        buttonClear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loginText.setText("");
-                passwordText.setText("");
-                dbAsyncTask.clearDB();
-                Toast.makeText(getBaseContext(), "DB is cleared",Toast.LENGTH_SHORT).show();
-            }
+        buttonClear.setOnClickListener(v -> {
+            loginText.setText("");
+            passwordText.setText("");
+            dbAsyncTask.clearDB();
+            Toast.makeText(getBaseContext(), "DB is cleared",Toast.LENGTH_SHORT).show();
         });
 
 
-        buttonLogin.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-            @Override
-            public void onClick(View v) {
+        buttonLogin.setOnClickListener(v -> {
 
-                progressBar.setVisibility(ProgressBar.VISIBLE);
+            progressBar.setVisibility(ProgressBar.VISIBLE);
 
-                new LoginATask(LoginActivity.this).execute();
+            new LoginATask(LoginActivity.this).execute();
 
-            }
         });
 
     }
