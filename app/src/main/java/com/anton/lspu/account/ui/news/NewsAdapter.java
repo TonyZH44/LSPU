@@ -42,6 +42,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull NewsViewHolder holder, int position) {
+        position = holder.getAdapterPosition();
         holder.titleText.setText(articles.get(position).getTitle());
         holder.dateText.setText(articles.get(position).getDate());
         holder.descriptionText.setText(articles.get(position).getDescription());
@@ -56,6 +57,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
                 177,
                 false));
 
+        int finalPosition = position;
         holder.mainConstraintLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,7 +68,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
                 //customTabsIntent.launchUrl(context, Uri.parse(articles.get(position).getUrl()));
 
                 Intent newsIntent = new Intent(context, NewsActivity.class);
-                newsIntent.putExtra("articleURL", articles.get(position).getUrl());
+                newsIntent.putExtra("articleURL", articles.get(finalPosition).getUrl());
                 context.startActivity(newsIntent);
             }
         });
@@ -77,7 +79,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
         return articles.size();
     }
 
-    public class NewsViewHolder extends RecyclerView.ViewHolder {
+    public static class NewsViewHolder extends RecyclerView.ViewHolder {
 
         TextView titleText, descriptionText, dateText;
         ImageView imageView;
