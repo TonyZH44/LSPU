@@ -12,6 +12,7 @@ import android.view.Menu;
 import com.anton.lspu.account.ui.settings.SettingsActivity;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
@@ -35,6 +36,7 @@ public class DrawerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         loadLocale();
+        loadTheme();
         setContentView(R.layout.activity_drawer);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -42,6 +44,8 @@ public class DrawerActivity extends AppCompatActivity {
 
         cookieViewModel = new ViewModelProvider(this).get(CookieViewModel.class);
         cookieViewModel.setCookies(new MutableLiveData<>(getIntent().getStringExtra("cookies")));
+
+        //cookieViewModel.setCookies(new MutableLiveData<>(new DBAsyncTask(getBaseContext()).getCookies()));
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -56,6 +60,17 @@ public class DrawerActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
 
 
+    }
+
+    private void loadTheme(){
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean darkmode = preferences.getBoolean("dark_mode", false);
+
+        if (darkmode) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
     }
 
     @Override
@@ -126,6 +141,11 @@ public class DrawerActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        recreate();
+    }
 
     public void loadLocale(){
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);

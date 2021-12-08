@@ -1,9 +1,11 @@
-<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <PreferenceCategory app:title="@string/settings_general">
 
 
         <ListPreference
+
             app:defaultValue="ru"
             app:entries="@array/languages"
             app:entryValues="@array/languages_values"
@@ -11,7 +13,13 @@
             app:title="@string/language"
             app:useSimpleSummaryProvider="true" />
 
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="dark_mode"
+            android:title="@string/dark_mode" />
+
     </PreferenceCategory>
+
 
 
 

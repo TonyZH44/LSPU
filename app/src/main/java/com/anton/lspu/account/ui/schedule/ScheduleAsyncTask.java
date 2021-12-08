@@ -20,7 +20,7 @@ import java.util.Map;
 
 public class ScheduleAsyncTask extends AsyncTask<String, String, String> {
 
-    private String cookies;
+    private final String cookies;
 
     private String scheduleURL = "https://lspu-lipetsk.ru/modules.php?name=kabinet&active_item=22";
 
@@ -49,6 +49,7 @@ public class ScheduleAsyncTask extends AsyncTask<String, String, String> {
 
     public Document getResponse(String cookies){
         try {
+            Log.i("SATcookies: ", String.valueOf(cookies));
             Document doc = Jsoup.connect(scheduleURL)
                     .cookies(splitToMap(cookies, ";","="))
                     .get();

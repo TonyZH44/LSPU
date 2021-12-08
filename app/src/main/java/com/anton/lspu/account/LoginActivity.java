@@ -10,7 +10,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 
 
-
+import android.util.Log;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.preference.PreferenceManager;
 
 import java.lang.ref.WeakReference;
@@ -35,6 +36,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        loadTheme();
         loadLocale();
         setContentView(R.layout.activity_login);
 
@@ -94,6 +96,17 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    public void loadTheme(){
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        Boolean theme = preferences.getBoolean("dark_mode", false);
+        if (theme) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
+
+    }
+
     private static class LoginATask extends AsyncTask<Void, Void, Void>{
 
 
@@ -134,6 +147,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 Intent logIntent = new Intent(activity, DrawerActivity.class);
                 logIntent.putExtra("cookies", cookies);
+                Log.i("Manualcookies:", cookies);
                 activity.startActivity(logIntent);
 
             }
@@ -144,6 +158,7 @@ public class LoginActivity extends AppCompatActivity {
         }
 
     }
+
 }
 
 

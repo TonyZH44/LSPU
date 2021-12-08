@@ -10,4 +10,7 @@
     <color name="blue_main">#051985</color>
     <color name="blue_middle">#2d43ba</color>
     <color name="blue_end">#435bd9</color>
+    <color name="black_light">#262626</color>
+    <color name="purple_primary">#333399</color>
+    <color name="gray">#737373</color>
 </resources>

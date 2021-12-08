@@ -20,5 +20,6 @@
     <string name="menu_about">О приложении</string>
     <string name="version">Версия</string>
     <string name="authors">Авторы: Тонеев Антон Андреевич и Скуднев Дмитрий Михайлович</string>
+    <string name="dark_mode">Темная тема:</string>
 
 </resources>

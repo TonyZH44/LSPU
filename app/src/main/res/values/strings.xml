@@ -27,5 +27,6 @@
     <string name="version">Version:</string>
     <string name="copyright" translatable="false">Copyright 2021 by Lipetsk State Pedagogical University</string>
     <string name="authors">Authors: Toneyev Anton and Skudnev Dmitriy</string>
+    <string name="dark_mode">Dark mode:</string>
 
 </resources>
