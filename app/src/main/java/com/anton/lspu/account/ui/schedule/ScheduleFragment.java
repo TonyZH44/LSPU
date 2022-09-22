@@ -1,5 +1,9 @@
 package com.anton.lspu.account.ui.schedule;
 
+import static androidx.webkit.WebSettingsCompat.FORCE_DARK_OFF;
+import static androidx.webkit.WebSettingsCompat.FORCE_DARK_ON;
+
+import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -21,8 +25,11 @@ import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.webkit.WebSettingsCompat;
+import androidx.webkit.WebViewFeature;
 
 import com.anton.lspu.account.CookieViewModel;
+import com.anton.lspu.account.DrawerActivity;
 import com.anton.lspu.account.R;
 
 import java.util.ArrayList;
@@ -42,6 +49,11 @@ public class ScheduleFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
+
+        DrawerActivity drawerActivity = (DrawerActivity) getActivity();
+        //cookies = drawerActivity.cookies;
+
+
         cookieViewModel = new ViewModelProvider(requireActivity()).get(CookieViewModel.class);
         cookies = String.valueOf(cookieViewModel.getCookies());
 
@@ -52,6 +64,8 @@ public class ScheduleFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_schedule, container, false);
 
+
+
         scheduleWebView = root.findViewById(R.id.schedulewebview);
         scheduleWebView.setWebViewClient(new MyWebViewClient());
 
@@ -61,6 +75,20 @@ public class ScheduleFragment extends Fragment {
         webSettings.setTextZoom(50);
         scheduleWebView.getSettings().setBuiltInZoomControls(true);
         scheduleWebView.getSettings().setDisplayZoomControls(false);
+
+        if (WebViewFeature.isFeatureSupported(WebViewFeature.FORCE_DARK)) {
+            switch (getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK) {
+                case Configuration.UI_MODE_NIGHT_YES:
+                    WebSettingsCompat.setForceDark(scheduleWebView.getSettings(), FORCE_DARK_ON);
+                    break;
+                case Configuration.UI_MODE_NIGHT_NO:
+                case Configuration.UI_MODE_NIGHT_UNDEFINED:
+                    WebSettingsCompat.setForceDark(scheduleWebView.getSettings(), FORCE_DARK_OFF);
+                    break;
+            }
+        }
+
+
 
         scheduleWebView.loadDataWithBaseURL(null,
                                              htmlTable,

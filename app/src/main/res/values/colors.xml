@@ -13,4 +13,6 @@
     <color name="black_light">#262626</color>
     <color name="purple_primary">#333399</color>
     <color name="gray">#737373</color>
+    <color name="orange">#DC8B14</color>
+    <color name="orange_variant">#AA6B0F</color>
 </resources>

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.Menu;
 
+import com.anton.lspu.account.ui.schedule.ScheduleFragment;
 import com.anton.lspu.account.ui.settings.SettingsActivity;
 import com.google.android.material.navigation.NavigationView;
 
@@ -31,6 +32,7 @@ public class DrawerActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private CookieViewModel cookieViewModel;
     private Locale locale;
+    //public String cookies;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,8 @@ public class DrawerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_drawer);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        //cookies = getIntent().getStringExtra("cookies");
 
 
         cookieViewModel = new ViewModelProvider(this).get(CookieViewModel.class);

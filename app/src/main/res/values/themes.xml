@@ -19,8 +19,12 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.ЛичныйКабинетЛГПУ.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="CoatOfArms">
+        <item name="coat_of_arms_about">@drawable/coatofarms_lspu_blue</item>
+    </style>
 
-    <style name="Theme.ЛичныйКабинетЛГПУ.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="Theme.ЛичныйКабинетЛГПУ.AppBarOverlay" parent="ThemeOverlay.AppCompat.DayNight.ActionBar" />
+
+    <style name="Theme.ЛичныйКабинетЛГПУ.PopupOverlay" parent="ThemeOverlay.AppCompat.DayNight" />
 
 </resources>

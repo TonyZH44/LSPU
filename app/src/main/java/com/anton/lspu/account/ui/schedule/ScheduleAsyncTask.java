@@ -50,8 +50,10 @@ public class ScheduleAsyncTask extends AsyncTask<String, String, String> {
     public Document getResponse(String cookies){
         try {
             Log.i("SATcookies: ", String.valueOf(cookies));
+
             Document doc = Jsoup.connect(scheduleURL)
-                    .cookies(splitToMap(cookies, ";","="))
+                    .cookies(splitToMap(cookies, "; ","="))
+                    .userAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.93 Safari/537.36")
                     .get();
             Log.i("Schedule_response:", String.valueOf(doc));
 
