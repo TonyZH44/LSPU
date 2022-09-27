@@ -15,4 +15,6 @@
     <color name="gray">#737373</color>
     <color name="orange">#DC8B14</color>
     <color name="orange_variant">#AA6B0F</color>
+    <color name="orange_secondary">#ec6b1e</color>
+    <color name="orange_secondary_variant">#A64A13</color>
 </resources>
