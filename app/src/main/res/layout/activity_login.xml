@@ -6,13 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
 
-    <Button
+    <!--<Button
         android:id="@+id/button_clear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Clear DB"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />-->
 
     <TextView
         android:id="@+id/head_lspu"

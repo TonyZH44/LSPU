@@ -29,7 +29,7 @@ import java.util.concurrent.ExecutionException;
 public class LoginActivity extends AppCompatActivity {
 
     EditText loginText, passwordText;
-    Button buttonLogin, buttonClear;
+    Button buttonLogin;
     CheckBox checkBoxMemory;
     ProgressBar progressBar;
 
@@ -48,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
         loginText = findViewById(R.id.login);
         passwordText = findViewById(R.id.password);
         buttonLogin = findViewById(R.id.button_login);
-        buttonClear = findViewById(R.id.button_clear);
+        //buttonClear = findViewById(R.id.button_clear);
         checkBoxMemory = findViewById(R.id.checkBox);
 
 
@@ -63,12 +63,12 @@ public class LoginActivity extends AppCompatActivity {
             //startActivity(logIntent);
         }
 
-        buttonClear.setOnClickListener(v -> {
+        /*buttonClear.setOnClickListener(v -> {
             loginText.setText("");
             passwordText.setText("");
             dbAsyncTask.clearDB();
             Toast.makeText(getBaseContext(), "DB is cleared",Toast.LENGTH_SHORT).show();
-        });
+        });*/
 
 
         buttonLogin.setOnClickListener(v -> {
